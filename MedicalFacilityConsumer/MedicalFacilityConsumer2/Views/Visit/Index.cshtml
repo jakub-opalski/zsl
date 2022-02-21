@@ -1,0 +1,71 @@
+﻿@model MedicalFacilityConsumer.Models.VisitRequestViewModel
+
+@using (Html.BeginForm("Index", "Visit", FormMethod.Post))
+{
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+
+    <div>
+        @Html.DropDownListFor(x => x.MedicalFacility, Model.AvailableFacilities,
+            "Wybierz placówke", new { })
+    </div>
+    <div>
+        @Html.DropDownListFor(x => x.ServiceId, Model.AvailableHealthServices,
+            "Wybierz usługe", new { })
+    </div>
+    <div>
+        @Html.TextAreaFor(x => x.DateFrom)
+    </div>
+    <div>
+        @Html.TextAreaFor(x => x.DateTo)
+    </div>
+    <div>
+        @Html.TextAreaFor(x => x.Doctor)
+    </div>
+    <div>
+        <input type="submit" value="Szukaj" />
+    </div>
+
+}
+
+
+@if (Model.Terms != null)
+{
+    <div>
+        Results
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-3">
+                Termin
+            </div>
+            <div class="col-3">
+                Lekrz
+            </div>
+            <div class="col-3">
+                Dodatkowe info
+            </div>
+        </div>
+
+        @foreach (var term in Model.Terms)
+        {
+            <div class="row">
+                <div class="col-3">
+                    @term.TermDate
+                </div>
+                <div class="col-3">
+                    @term.Doctor
+                </div>
+                <div class="col-3">
+                    @term.AdditionalInfo
+                </div>
+            </div>
+        }
+
+    </div>
+
+}
+

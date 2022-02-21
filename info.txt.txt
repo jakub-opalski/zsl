@@ -1,0 +1,5 @@
+****************************************
+Zadanie ze zintegrowaną placówką medyczną:
+
+Należy otworzyć i uruchomić solucje MedicalFacilityAPI
+Następnie należy otworzyć i uruchomić solucje MedicalFacilityConsumer

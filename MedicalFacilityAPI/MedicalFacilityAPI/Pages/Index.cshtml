@@ -1,0 +1,116 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Witam na zajęciach ZSL</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <p>
+            W ramach zajęć należy zaimplementować wyszukiwanie wolnych terminów w zintegrowanych placówkach medycznych.
+
+        </p>
+        <p>
+            Programy można przesłać na adres <a href="mailto: jakub.opalski@aspiresys.com">jakub.opalski@aspiresys.com</a>
+            w celu weryfikacji i uzyskania odpowiedzi na pytania lub sugestie
+        </p>
+    </div>
+    <div class="row">
+        Zarys integracji i funkcjonowania programu powinien wyglądać następująco
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <img src="~/Images/System_Architecture.drawio.png" />
+        </div>
+        <div class="col">
+            <img src="~/Images/Chart flow.drawio.png" />
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            Należy utworzyć aplikacje ASP.NET Core Web App.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>
+                Dodac prosty widok wyszukiwania wolnych terminów, który będzie zawierał:
+            </p>
+            <ul>
+                <li>
+                    Wybór placówki medycznej
+                    <ul>
+                        <li>Polmed</li>
+                        <li>Luxmed</li>
+                    </ul>
+                </li>
+                <li>
+                    Wybór usługi medycznej
+                    <ul>
+                        <li>
+                            Telekonsultacja - internista
+                            <p>(specjalizacja - internista) (ID = 1)</p>
+                        </li>
+                        <li>
+                            Telekonsultacja - pediatra
+                            <p>(specjalizacja - internista) (ID = 2)</p>
+                        </li>
+                        <li>
+                            Telekonsultacja - psychiatra
+                            <p>(specjalizacja - psychiatria) (ID = 3)</p>
+                        </li>
+                        <li>
+                            Telekonsultacja - dietetyk
+                            <p>(specjalizacja - dietetyka) (ID = 4)</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Przedział dat w których będziemy szukali terminu
+                </li>
+                <li>
+                    Nazwe lekarza (pole nie jest wymagane)
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <img src="~/Images/Portal view.drawio.png" />
+        </div>
+    </div>
+    <div class="row mt-4">
+        <p>
+            Po zatwierdzeniu formularza i zwalidowaniu danych wejściowych należy w zależności od wybranej placówki,
+            odwołać się do odpowiedniego API wybranej placówki medyczne
+        </p>
+        <p>
+            Dokumentacja API znajduje się pod adresem: <a href="https://asp-opal-api.azurewebsites.net/swagger/index.html">https://asp-opal-api.azurewebsites.net/swagger/index.html</a>
+        </p>
+        <p>
+            Poniżej znajdują się adresy url do poszczególnych placówek medycznych
+        </p>
+    </div>
+    <div class="row">
+        <ul>
+            <li>
+                Polmed - <a href="https://asp-opal-api.azurewebsites.net/api/Polmed/terms">https://asp-opal-api.azurewebsites.net/api/Polmed/terms</a>
+            </li>
+            <li>
+                Luxmed - <a href="https://asp-opal-api.azurewebsites.net/api/Luxmed/terms">https://asp-opal-api.azurewebsites.net/api/Luxmed/terms</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <p>
+            Wskazówki:
+        </p>
+    </div>
+    <div class="row">
+        <ul>
+            <li>należy tak przygotować implementacje, żeby była otwarta na potencjalne integracje z kolejnymi placówkami medycznymi</li>
+            <li>należy uwzględnić obsługę błędów (np. niedostępne API, API zwracające błędy)</li>
+        </ul>
+    </div>
+</div>
