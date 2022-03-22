@@ -1,0 +1,4 @@
+﻿We are preparing a system in IT company, where Teamleader and programmer can prepare tasks, assign them and work on them.
+
+
+After some time, our company grows, and we also have managers, who are only assigning tasks, whereas Teamleaders and devs can do all of these.

@@ -1,0 +1,3 @@
+﻿Imagine, your program is calculating list of rectangles total area.
+
+After some time, it has to calculate also total areas for circle .. and after some time another shape.

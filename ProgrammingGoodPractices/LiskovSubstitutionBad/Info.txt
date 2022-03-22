@@ -1,0 +1,5 @@
+﻿Example:
+We have an application that loads a text from files and sometimes it needs to save the text to files.
+
+
+Imagine, that after some time, some of the files are readonly.

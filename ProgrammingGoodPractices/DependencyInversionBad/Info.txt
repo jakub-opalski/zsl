@@ -1,0 +1,6 @@
+﻿Imagine, that your program is exporting some data and any errors you want to save to file.
+
+After some time, we noticed, that sometimes we have IO expcetions, so in this instance, we want to log our logs into database.
+
+
+After another while, we concluded we also want to save errors to even viewer
