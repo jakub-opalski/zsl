@@ -1,0 +1,33 @@
+Fabryka samochodów
+
+Zaprojektuj aplikacje, dla nowego producenta samochodów, który będzie mógł dzięki niej projektować oraz wysyłać na linie produkcyjne samochody.
+Przygotuj warstwe serwisu, który będzie zapisywał do bazy nowe dodane modele pojazdów, edytował istniejące oraz obsługiwał zgłoszenia wysyłki do produkcji konkretnej sztuki pojazdu.
+
+
+
+Zaprojektuj metody do:
+- zapisu pojazdu (nowy jak i edycja)
+	- zapis powinien posiadać walidację (np. czy zostały wybrane wymagane parametry, czy parametry są w zakresie odpowiednich norm itp.)
+- wysyłkę pojazdu na linie produkcyjną
+	- wysyłka poszczególnych komponentów na linie produkcyjną w odpowiedniej kolejności
+	- niektóre elementy/komponenty mogą być dopiero wykonane, jak zostaną skończone poprzednie (zależność od poprzednich komponentów)
+	- założyć, że produkcja powoduje "wysyłke" do zewnętrznych dostawców (bez implementacji API - przygotowana warstwa abstrakcji)
+
+
+Na potrzeby zadania, przyjmij, że jeszcze nie wiadomo gdzie będą zapisywane dane (baza danych, plik, azure itp, itd). Kod powinien być przygotowany w taki sposób, aby można było zaimplementować warstę zapisu kiedy będzie wiadomo co to będzie.
+
+
+Zastosuj dobre praktyki programowania SOLID, YAGNI, KISS.
+
+
+Przykladowy log programu:
+- Utworzylem nowa marke pojazdu: "Nazwa"
+- Wyslalem na linie produkcujna X sztuk marki "Nazwa"
+- Produkuje nadwozie dla marki "Nazwa"
+- Montuje szyby dla marki "Nazwa"
+- Montuje silnik dla ...
+- Montuje pozostałe podzespoly dla ..
+- Testuje czy wyprodukowana sztuka pojazdu dziala
+- zakonczylem produkcje pojazdu marki "X"
+- zlecilem wysylke pojazdu do ...
+
