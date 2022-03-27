@@ -1,0 +1,37 @@
+<AssemblyLineLog>
+	<Vehicle>
+		<Type>Car</Type>
+		<Model>Octavia</Model>
+		<VIN>215235FSDGD43SFDGGASAA54</VIN>
+		<Color>Black</Color>
+		<EngineCapacity>1400</EngineCapacity>
+		<NumberOfDoors>4</NumberOfDoors>
+	</Vehicle>
+	<Events>
+		<Event>
+			<EventName>ProductionRequested</EventName>
+			<EventDescription></EventDescription>
+			<DateTime>2022-03-27 12:44:00</DateTime>
+		</Event>
+		<Event>
+			<EventName>ProductionStarted</EventName>
+			<EventDescription></EventDescription>
+			<DateTime>2022-03-27 12:50:00</DateTime>
+		</Event>
+		<Event>
+			<EventName>ProducingVehicleBody</EventName>
+			<EventDescription></EventDescription>
+			<DateTime>2022-03-27 12:50:00</DateTime>
+		</Event>
+		<Event>
+			<EventName>ProductionCompleted</EventName>
+			<EventDescription></EventDescription>
+			<DateTime>2022-03-27 12:50:00</DateTime>
+		</Event>
+		<Event>
+			<EventName>VehicleShipped</EventName>
+			<EventDescription></EventDescription>
+			<DateTime>2022-03-27 12:50:00</DateTime>
+		</Event>
+	</Events>
+</AssemblyLineLog>
