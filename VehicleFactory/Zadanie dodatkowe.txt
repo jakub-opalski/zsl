@@ -39,6 +39,9 @@ Aktualizacja zadania:
 3. Zapisuj po każdej akcji log/dziennik do xmla (do pliku) (oprócz standardowego wyświetlenia na ekran konsoli)
 	2a. Upewnij się, że twój pojazd i plik mają unikalne nazwy, aby mieć dostęp do odpowiedniego pliku (na potrzeby tego zadania, załóż, że pojedyncze uruchomienie aplikacji kończy zadanie, czyli możesz przetrzymywać tą informację w pamięci aplikacji) 
 4. Po wyprodukowaniu pojazdu, wczytaj log z produkcji (z pliku xml) i wyeksportuj go (jeszcze nie wiadomo dokladnie gdzie, czy bedzie to lokacja w sieci, API, a moze jakis inny storage. Utwórz odpowiednią warstwę abstrakcji wraz z "fakową" implementacją, która wypisze na ekran że coś exportuje)
+5. Napisz pare unit testów do aplikacji
 
 Przykładowy xml można znaleźć tutaj:
 https://github.com/jakub-opalski/zsl/blob/main/VehicleFactory/AssemblyLineLog.xml
+
+
