@@ -1,7 +1,7 @@
 Fabryka samochodów
 
 Zaprojektuj aplikacje, dla nowego producenta samochodów, który będzie mógł dzięki niej projektować oraz wysyłać na linie produkcyjne samochody.
-Przygotuj warstwe serwisu, który będzie zapisywał do bazy nowe dodane modele pojazdów, edytował istniejące oraz obsługiwał zgłoszenia wysyłki do produkcji konkretnej sztuki pojazdu.
+Przygotuj warstwe serwisu, który będzie zapisywał nowo dodane modele pojazdów, edytował istniejące oraz obsługiwał zgłoszenia wysyłki do produkcji konkretnej sztuki pojazdu.
 
 
 
@@ -31,3 +31,14 @@ Przykladowy log programu:
 - zakonczylem produkcje pojazdu marki "X"
 - zlecilem wysylke pojazdu do ...
 
+
+
+Aktualizacja zadania:
+1. Utwórz dziennik pojazdu
+2. Zapisuj każdą operacje do dziennika pojazdu
+3. Zapisuj po każdej akcji log/dziennik do xmla (do pliku) (oprócz standardowego wyświetlenia na ekran konsoli)
+	2a. Upewnij się, że twój pojazd i plik mają unikalne nazwy, aby mieć dostęp do odpowiedniego pliku (na potrzeby tego zadania, załóż, że pojedyncze uruchomienie aplikacji kończy zadanie, czyli możesz przetrzymywać tą informację w pamięci aplikacji) 
+4. Po wyprodukowaniu pojazdu, wczytaj log z produkcji (z pliku xml) i wyeksportuj go (jeszcze nie wiadomo dokladnie gdzie, czy bedzie to lokacja w sieci, API, a moze jakis inny storage. Utwórz odpowiednią warstwę abstrakcji wraz z "fakową" implementacją, która wypisze na ekran że coś exportuje)
+
+Przykładowy xml można znaleźć tutaj:
+https://github.com/jakub-opalski/zsl/blob/main/VehicleFactory/AssemblyLineLog.xml
