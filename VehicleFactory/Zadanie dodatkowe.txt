@@ -33,7 +33,7 @@ Przykladowy log programu:
 
 
 
-Aktualizacja zadania:
+Aktualizacja zadania (27.03.2022)
 1. Utwórz dziennik pojazdu
 2. Zapisuj każdą operacje do dziennika pojazdu
 3. Zapisuj po każdej akcji log/dziennik do xmla (do pliku) (oprócz standardowego wyświetlenia na ekran konsoli)
@@ -44,4 +44,23 @@ Aktualizacja zadania:
 Przykładowy xml można znaleźć tutaj:
 https://github.com/jakub-opalski/zsl/blob/main/VehicleFactory/AssemblyLineLog.xml
 
+
+
+Aktualizacja zadania (03.04.2022)
+1. Wprowadz wielowątkowość do aplikacji (aby produkcja odbywała się równolegle)
+2. Zabezpiecz wątki aby się nie deadlockowały
+3. Wprowadź do produkcji przygotowywanie poszczególnych komponentów aby były niezależne od siebie
+
+4 ... Napisz kolejne unit testy do aplikacji
+
+
+Ad3. Przykład:
+- niezależne komponenty
+	a) produkcja foteli
+	b) produkcja silnika
+	c) produkcja płyty podłogowej
+- komponent zależny
+	d) składanie całości 
+	
+Kroki a,b,c mogę odbywać się niezależnie (w dowolnej kokejności), krok d musi czekać na skończenie się kroków a, b, c
 
