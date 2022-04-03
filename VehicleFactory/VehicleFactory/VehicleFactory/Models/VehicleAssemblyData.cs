@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using VehicleFactory.Enums;
+using VehicleFactory.Helpers;
 
 namespace VehicleFactory.Models
 {
     public class VehicleAssemblyData
     {
-        public ProdctionStatus Status { get; set; }
+        public ProductionStatus Status { get; set; }
         public VehicleModel Vehicle { get; set; }
         public List<EventLog> VehicleAssemblyLogs { get; set; }
+
+
+        public void SetNextStatus()
+        {
+            Status = ProductionStatusHelper.MoveNext(Status);
+        }
     }
 }

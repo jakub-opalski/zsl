@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using VehicleFactory.Abstract;
 using VehicleFactory.Enums;
+using VehicleFactory.Helpers;
 using VehicleFactory.Models;
 
 namespace VehicleFactory.Services
@@ -66,7 +65,7 @@ namespace VehicleFactory.Services
         {
             var vehicleData = new VehicleAssemblyData
             {
-                Status = Enums.ProdctionStatus.ScheduledForProduction,
+                Status = Enums.ProductionStatus.ScheduledForProduction,
                 Vehicle = new VehicleModel(model),
                 VehicleAssemblyLogs = new List<EventLog>()
             };
@@ -78,7 +77,7 @@ namespace VehicleFactory.Services
 
         public void SendVehiclesToAssemblyLine()
         {
-            foreach (var vehicleData in _assemblyVehiclesList.Where(x => x.Status == Enums.ProdctionStatus.ScheduledForProduction))
+            foreach (var vehicleData in _assemblyVehiclesList.Where(x => x.Status == Enums.ProductionStatus.ScheduledForProduction))
             {
                 ProduceSingleVehicle(vehicleData);
             }
@@ -86,7 +85,7 @@ namespace VehicleFactory.Services
 
         private void ProduceSingleVehicle(VehicleAssemblyData vehicleAssemblyData)
         {
-            vehicleAssemblyData.Status = Enums.ProdctionStatus.InProduction;
+            vehicleAssemblyData.SetNextStatus();
             AddAssemblyLog(vehicleAssemblyData, ProductionLogType.ProductionStarted);
             _dataStorage.Serialize(vehicleAssemblyData, vehicleAssemblyData.Vehicle.VehicleId.ToString());
             _logger.LogMessage($"Production started for: { vehicleAssemblyData.Vehicle.Model }");
@@ -96,14 +95,14 @@ namespace VehicleFactory.Services
         {
             while (true)
             {
-                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProdctionStatus.Produced))
+                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProductionStatus.Produced))
                 {
                     _logger.LogMessage($"[THREAD2] Nothing for shipping yet ...");
                     Thread.Sleep(500);
                 }
                 else
                 {
-                    var vehicleForShipping = _assemblyVehiclesList.FirstOrDefault(x => x.Status == Enums.ProdctionStatus.Produced);
+                    var vehicleForShipping = _assemblyVehiclesList.FirstOrDefault(x => x.Status == Enums.ProductionStatus.Produced);
                     ShipSingleVehicle(vehicleForShipping);
                     Thread.Sleep(_random.Next(1000));
                 }
@@ -112,7 +111,7 @@ namespace VehicleFactory.Services
 
         private void ShipSingleVehicle(VehicleAssemblyData vehicleAssemblyData)
         {
-            vehicleAssemblyData.Status = ProdctionStatus.Shipped;
+            vehicleAssemblyData.SetNextStatus();
             AddAssemblyLog(vehicleAssemblyData, ProductionLogType.VehicleShipped);
             _dataStorage.Serialize(vehicleAssemblyData, vehicleAssemblyData.Vehicle.VehicleId.ToString());
             _logger.LogMessage($"[THREAD2] Shipping: { vehicleAssemblyData.Vehicle.Model }");
@@ -122,14 +121,14 @@ namespace VehicleFactory.Services
         {
             while (true)
             {
-                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProdctionStatus.InProduction))
+                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProductionStatus.InProduction))
                 {
                     _logger.LogMessage($"[THREAD] Nothing in production yet ...");
                     Thread.Sleep(500);
                 }
                 else
                 {
-                    var vehicleForProduction = _assemblyVehiclesList.FirstOrDefault(x => x.Status == Enums.ProdctionStatus.InProduction);
+                    var vehicleForProduction = _assemblyVehiclesList.FirstOrDefault(x => x.Status == Enums.ProductionStatus.InProduction);
                     ProduceVehicle(vehicleForProduction);
                     Thread.Sleep(_random.Next(500));
                 }
@@ -139,7 +138,7 @@ namespace VehicleFactory.Services
         private void ProduceVehicle(VehicleAssemblyData vehicleAssemblyData)
         {
             GetPartsForProduction(vehicleAssemblyData);
-            vehicleAssemblyData.Status = Enums.ProdctionStatus.Produced;
+            vehicleAssemblyData.SetNextStatus();
             AddAssemblyLog(vehicleAssemblyData, ProductionLogType.ProductionCompleted);
             _dataStorage.Serialize(vehicleAssemblyData, vehicleAssemblyData.Vehicle.VehicleId.ToString());
             _logger.LogMessage($"[THREAD] Prodction completed for: { vehicleAssemblyData.Vehicle.Model }");
@@ -176,14 +175,14 @@ namespace VehicleFactory.Services
         {
             while (true)
             {
-                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProdctionStatus.Shipped))
+                if (!_assemblyVehiclesList.Any(x => x.Status == Enums.ProductionStatus.Shipped))
                 {
                     _logger.LogMessage($"[THREAD3] Nothing to export ...");
                     Thread.Sleep(5000);
                 }
                 else
                 {
-                    var shipppedVehicle = _assemblyVehiclesList.FirstOrDefault(x => x.Status == ProdctionStatus.Shipped);
+                    var shipppedVehicle = _assemblyVehiclesList.FirstOrDefault(x => x.Status == ProductionStatus.Shipped);
                     var vehicleLog = _dataStorage.Load(shipppedVehicle.Vehicle.VehicleId.ToString());
                     _exportLogsService.ExportLogs(vehicleLog);
                     _assemblyVehiclesList.Remove(shipppedVehicle);
